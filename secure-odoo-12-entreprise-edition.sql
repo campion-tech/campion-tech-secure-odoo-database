@@ -1,1 +1,1 @@
-UPDATE res_partner SET email = CONCAT('partner',id,'@example.com');
+UPDATE res_partner SET email = CONCAT('Client',id,'@test.com') where customer = 't';
