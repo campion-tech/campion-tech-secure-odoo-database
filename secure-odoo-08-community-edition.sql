@@ -1,4 +1,4 @@
-SELECT id, password, login FROM public.res_users order by id;
+﻿SELECT id, password, login FROM public.res_users order by id;
 
 -- Update table users
 UPDATE public.res_users SET
@@ -15,7 +15,7 @@ SELECT id, password, login FROM public.res_users order by id;
 -------------------------------------------------------------------------------------------------------------
 
 SELECT id, name, email, website, phone, mobile, street , street2, zip, city
- FROM public.res_partner
+FROM public.res_partner
 where customer =True
 order by id;
 
@@ -33,14 +33,14 @@ UPDATE public.res_partner SET
 where customer =True;
 
 SELECT id, name, email, website, phone, mobile, street , street2, zip, city
- FROM public.res_partner
+FROM public.res_partner
 where customer =True
 order by id;
 
 ----------------------------------------------------------------------------------------------------
 
 SELECT id, name, email, website, phone, mobile, street , street2, zip, city
- FROM public.res_partner
+FROM public.res_partner
 where supplier =True
 order by id;
 
@@ -58,7 +58,7 @@ UPDATE public.res_partner SET
 where supplier =True;
 
 SELECT id, name, email, website, phone, mobile,street , street2, zip, city
- FROM public.res_partner
+FROM public.res_partner
 where supplier =True
 order by id;
 
@@ -66,7 +66,7 @@ order by id;
 
 SELECT id, name, email, website, phone, mobile, street , street2, zip, city
 FROM public.res_partner
-where customer= False and supplier = False or is_company = True
+where customer= False and supplier = False 
 order by id;
 
 -- Update partners who are not suppliers and not clients
@@ -80,11 +80,11 @@ UPDATE public.res_partner SET
 	street2 = null,
 	zip = null,
 	city = null
-where customer= False and supplier = False or is_company = True;
+where customer= False and supplier = False ;
 
 SELECT id, name, email, website, phone, mobile, street , street2, zip, city
 FROM public.res_partner
-where customer= False and supplier = False or is_company = True
+where customer= False and supplier = False 
 order by id;
 
 --------------------------------------------------------------------------------------------------------
@@ -105,6 +105,7 @@ SELECT id, name, email, phone, logo_web ,  account_no, company_registry FROM pub
 ------------------------------------------------------------------------------------------------------------------
 
 SELECT name,  email, phone, street, street2, zip, city, country FROM public.res_bank;
+
 -- Update  table Banks
 UPDATE public.res_bank SET
 	name = CONCAT('bank ', id),
@@ -115,6 +116,7 @@ UPDATE public.res_bank SET
 	zip = null,
 	city = null,
 	country= null;
+	
 SELECT name,  email, phone, street, street2, zip, city, country FROM public.res_bank;
 
 -----------------------------------------------------------------------------------------------------------
@@ -132,14 +134,18 @@ SELECT acc_number FROM public.res_partner_bank;
 
 -- Delete all row from  table ir_mail_server  (outgoing mail servers) ----------
 SELECT * FROM public.ir_mail_server;
+
 DELETE FROM public.ir_mail_server;
+
 SELECT * FROM public.ir_mail_server;
 
 ----------------------------------------------------------------------------------------------------------------
 
 -- Delete all row from  table fetchmail_server (incoming Mail Servers)
 SELECT * FROM public.fetchmail_server;
+
 DELETE FROM public.fetchmail_server;
+
 SELECT * FROM public.fetchmail_server;
 
 --------------------------------------------------------------------------------------------------------------

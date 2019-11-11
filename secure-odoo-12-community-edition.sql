@@ -1,4 +1,4 @@
-SELECT id, password, login FROM public.res_users order by id;
+﻿SELECT id, password, login FROM public.res_users order by id;
 
 -- Update table users
 UPDATE public.res_users SET
@@ -15,7 +15,7 @@ SELECT id, password, login FROM public.res_users order by id;
 --------------------------------------------------------------------------------------------------------------------
 
 SELECT id, name, email, website, phone, mobile, commercial_company_name, company_name, street , street2, zip, city
- FROM public.res_partner
+FROM public.res_partner
 where customer =True
 order by id;
 
@@ -42,7 +42,7 @@ order by id;
 ------------------------------------------------------------------------------------------------------------------------
 
 SELECT id, name, email, website, phone, mobile, commercial_company_name, company_name, street , street2, zip, city
- FROM public.res_partner
+FROM public.res_partner
 where supplier =True
 order by id;
 
@@ -62,7 +62,7 @@ UPDATE public.res_partner SET
 where supplier =True;
 
 SELECT id, name, email, website, phone, mobile, commercial_company_name, company_name, street , street2, zip, city
- FROM public.res_partner
+FROM public.res_partner
 where supplier =True
 order by id;
 
@@ -70,7 +70,7 @@ order by id;
 
 SELECT id, name, email, website, phone, mobile, commercial_company_name, company_name, street , street2, zip, city
 FROM public.res_partner
-where customer= False and supplier = False or is_company = True
+where customer= False and supplier = False 
 order by id;
 
 -- Update partners who are not suppliers and not clients
@@ -86,11 +86,11 @@ UPDATE public.res_partner SET
 	street2 = null,
 	zip = null,
 	city = null
-where customer= False and supplier = False or is_company = True ;
+where customer= False and supplier = False  ;
 
 SELECT id, name, email, website, phone, mobile, commercial_company_name, company_name, street , street2, zip, city
 FROM public.res_partner
-where customer= False and supplier = False or is_company = True
+where customer= False and supplier = False 
 order by id;
 
 
@@ -99,6 +99,7 @@ order by id;
 SELECT id, name, email, phone, logo_web , report_header, report_footer, account_no, company_registry
 FROM public.res_company;
 
+-- Update Company
 UPDATE public.res_company SET
 	name = CONCAT('Company ', id),
 	email = CONCAT('company',id,'@example.com'),
@@ -116,6 +117,7 @@ FROM public.res_company;
 
 SELECT name,  email, phone, street, street2, zip, city, country FROM public.res_bank;
 
+-- Update bank
 UPDATE public.res_bank SET
 	name = CONCAT('bank ', id),
 	email = CONCAT('bank',id,'@example.com'),
@@ -132,6 +134,7 @@ SELECT name,  email, phone, street, street2, zip, city, country FROM public.res_
 
 SELECT acc_number, sanitized_acc_number FROM public.res_partner_bank;
 
+-- Update partners bank
 UPDATE public.res_partner_bank SET
 	acc_number = '12-34-56 7891111' ,
 	sanitized_acc_number = CONCAT('123456789111', id);
@@ -140,29 +143,28 @@ SELECT acc_number, sanitized_acc_number FROM public.res_partner_bank;
 
 --------------------------------------------------------------------------------------------------------------------------
 
--- Delete all row from  table ir_mail_server  (outgoing mail servers)
 
 SELECT * FROM public.ir_mail_server;
 
+-- Delete all row from  table ir_mail_server  (outgoing mail servers)
 DELETE FROM public.ir_mail_server;
 
 SELECT * FROM public.ir_mail_server;
 
 ---------------------------------------------------------------------------------------------------------------------
 
--- Delete all row from  table fetchmail_server (incoming Mail Servers)
-
 SELECT * FROM public.fetchmail_server;
 
+-- Delete all row from  table fetchmail_server (incoming Mail Servers)
 DELETE FROM public.fetchmail_server;
 
 SELECT * FROM public.fetchmail_server;
 
 -----------------------------------------------------------------------------------------------------------------
 
--- Update table payment acquirer
 SELECT id,name, provider, paypal_email_account,paypal_seller_account, paypal_pdt_token, paypal_api_username, paypal_api_password, paypal_api_access_token, paypal_api_access_token_validity FROM public.payment_acquirer;
 
+-- Update table payment acquirer
 UPDATE public.payment_acquirer SET
 	paypal_email_account = CONCAT('mail', id,'@example.com'),
 	paypal_seller_account = CONCAT('seller', id,'@example.com'),
